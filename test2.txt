@@ -1,0 +1,8 @@
+This is a small document written solely to test the longest line program.
+That being the case, it consists of multiple lines
+of varying length.
+There
+is
+no poetry in the line lengths
+as far as I can tell.
+Oh well, next time perhaps.
