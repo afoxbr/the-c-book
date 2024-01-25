@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAXLINE 1000
+#define MAXLINE 20 
 
 int get_line(char line[], int maxline);
 void copy(char to[], char from[]);
@@ -18,8 +18,15 @@ int main()
       max = len;
       copy(longest, line);
     }
-  if (max > 0)
-    printf("%s", longest);
+    if (max > 0){
+      if (max > MAXLINE) {
+	printf("\nStorage limit exceeded by : %d", max - MAXLINE);
+	printf("\nString length : %d", max);
+	printf("\n%s\n", longest);
+      } else {
+	printf("%s\n", longest);
+      }
+    }
 
   return 0;
 }
