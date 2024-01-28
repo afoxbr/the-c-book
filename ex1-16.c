@@ -12,21 +12,17 @@ int main()
   char longest[MAXLINE];
 
   max = 0;
+  len = 0;
   
-    while ((len = get_line(line, MAXLINE)) > 0)
+  while ((len = get_line(line, MAXLINE)) > 0)
     if (len > max) {
       max = len;
       copy(longest, line);
     }
-    if (max > 0){
-      if (max > MAXLINE) {
-	printf("\nStorage limit exceeded by : %d", max - MAXLINE);
-	printf("\nString length : %d", max);
-	printf("\n%s\n", longest);
-      } else {
-	printf("%s\n", longest);
-      }
-    }
+
+  if (max > 0){
+    printf("longest line(%d):%s\n", max, longest);
+  }
 
   return 0;
 }
@@ -35,13 +31,17 @@ int get_line(char s[], int lim)
 {
   int c, i;
 
-  for (i = 0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
+  for (i = 0; i < lim-2 && (c=getchar())!=EOF && c!='\n'; ++i)
     s[i] = c;
-  if (c == '\n'){
-    s[i] = c;
+  if (c != EOF || i != 0){
+    s[i] = '\n';
     ++i;
   }
   s[i] = '\0';
+  while(c != EOF && c != '\n'){
+    c = getchar();
+    ++i;
+  }
   return i;
 }
 
